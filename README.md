@@ -85,6 +85,25 @@ These file will compile and build for both IOS and Android.
 
 ![build-process](./Images/flutter2.jpeg)
 
+## Folder Structure
+
+- Idea folder holds some config for android studio
+- .vscode is just contains a setting.json files for extensions
+
+- android file contains all the the important file such that we can debug and compile the code.
+
+- build is the resultant or build files
+
+- lib file contains main dart code which contains logic and UI.
+
+- test is a file for testing purpose.
+
+- web is for web view and for web support.
+
+- pubspec.yaml is like package.json because it contains all the list of dependencies and many more about our app .
+
+- pubspec.lock is like package.lock.json file.
+
 # What TODO
 
 ### Getting Strted

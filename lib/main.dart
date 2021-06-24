@@ -1,21 +1,14 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MainApp());
 }
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class MainApp extends StatelessWidget {
+  //add methods
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Home-page',
-      theme: ThemeData(
-        primarySwatch: Colors.grey,
-      ),
-      home: MyHomePage(title: 'Welcome'),
-      debugShowCheckedModeBanner: false,
-    );
+    return MaterialApp(home: MyHomePage(title: "hi"));
   }
 }
 
@@ -29,55 +22,21 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
+  double widht = 20;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-        centerTitle: true,
-      ),
-      body: Container(
-          height: 200,
-          padding: EdgeInsets.fromLTRB(2, 2, 0, 5),
-          child: ListView(
-            // This next line does the trick.
-            scrollDirection: Axis.vertical,
-            children: <Widget>[
-              Container(
-                width: 160.0,
-                height: 100,
-                color: Colors.red,
-              ),
-              Container(
-                width: 160.0,
-                height: 100,
-                color: Colors.blue,
-              ),
-              Container(
-                width: 160.0,
-                height: 100,
-                color: Colors.green,
-              ),
-              Container(
-                width: 160.0,
-                height: 100,
-                color: Colors.yellow,
-              ),
-              Container(
-                width: 160.0,
-                height: 100,
-                color: Colors.orange,
-              ),
-            ],
-          )),
+    return AppBar(
+      centerTitle: true,
+      title: Text.rich(TextSpan(
+        children: [
+          TextSpan(
+              text: "beauty",
+              style: TextStyle(
+                fontStyle: FontStyle.italic,
+                color: Colors.amber,
+              ))
+        ],
+      )),
     );
   }
 }
