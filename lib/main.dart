@@ -1,42 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import './mini-projects/IdCard.dart';
 
 void main() {
-  runApp(MainApp());
+  runApp(
+    MaterialApp(
+      debugShowCheckedModeBanner: false,
+      color: Colors.black,
+      home: Home(),
+    ),
+  );
 }
 
-class MainApp extends StatelessWidget {
-  //add methods
+void func(String a) {
+  print(a);
+}
+
+//custom stateless widget
+class Home extends StatelessWidget {
+  final String bodyText = "Hi There";
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: MyHomePage(title: "hi"));
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  double widht = 20;
-  @override
-  Widget build(BuildContext context) {
-    return AppBar(
-      centerTitle: true,
-      title: Text.rich(TextSpan(
-        children: [
-          TextSpan(
-              text: "beauty",
-              style: TextStyle(
-                fontStyle: FontStyle.italic,
-                color: Colors.amber,
-              ))
-        ],
-      )),
+    return Scaffold(
+      appBar: AppBar(
+        title: Icon(
+          Icons.home,
+          color: Colors.white,
+        ),
+        centerTitle: true,
+        backgroundColor: Colors.black,
+        toolbarHeight: 75.0,
+        toolbarOpacity: .8,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+              bottom: Radius.zero, top: Radius.circular(50)),
+        ),
+      ),
+      body: IdCard(),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => func(bodyText),
+        child: Icon(Icons.add),
+      ),
+      backgroundColor: Colors.grey,
     );
   }
 }
