@@ -1,6 +1,7 @@
+import 'package:flut_1/mini-projects/QuotesList.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import './mini-projects/IdCard.dart';
+// import './mini-projects/IdCard.dart';
 
 void main() {
   runApp(
@@ -12,13 +13,15 @@ void main() {
   );
 }
 
-void func(String a) {
-  print(a);
+//custom stateless widget
+class Home extends StatefulWidget {
+  @override
+  _HomeState createState() => _HomeState();
 }
 
-//custom stateless widget
-class Home extends StatelessWidget {
+class _HomeState extends State<Home> {
   final String bodyText = "Hi There";
+  int counter = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,9 +39,9 @@ class Home extends StatelessWidget {
               bottom: Radius.zero, top: Radius.circular(50)),
         ),
       ),
-      body: IdCard(),
+      body: Quotes(),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => func(bodyText),
+        onPressed: () {},
         child: Icon(Icons.add),
       ),
       backgroundColor: Colors.grey,
