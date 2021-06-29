@@ -1,7 +1,6 @@
-import 'package:flut_1/mini-projects/QuotesList.dart';
+import 'package:flut_1/CRUD/app.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-// import './mini-projects/IdCard.dart';
 
 void main() {
   runApp(
@@ -39,7 +38,7 @@ class _HomeState extends State<Home> {
               bottom: Radius.zero, top: Radius.circular(50)),
         ),
       ),
-      body: Quotes(),
+      body: MyFavQuotes(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         child: Icon(Icons.add),
