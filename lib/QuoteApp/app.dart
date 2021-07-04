@@ -1,7 +1,6 @@
-import 'package:flut_1/CRUD/data.dart';
 import 'package:flutter/material.dart';
-import '../CRUD/Quote_card.dart';
-import '../CRUD/data.dart';
+import '../QuoteApp/Quote_card.dart';
+import '../QuoteApp/data.dart';
 
 class MyFavQuotes extends StatefulWidget {
   @override
