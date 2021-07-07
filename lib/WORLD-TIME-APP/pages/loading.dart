@@ -1,5 +1,7 @@
 import 'package:flut_1/WORLD-TIME-APP/services/world_time.dart';
 import 'package:flutter/material.dart';
+// ignore: import_of_legacy_library_into_null_safe
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class Loading extends StatefulWidget {
   const Loading({Key? key}) : super(key: key);
@@ -8,12 +10,27 @@ class Loading extends StatefulWidget {
   _LoadingState createState() => _LoadingState();
 }
 
+class ScreenArguments {
+  final String location;
+  final String flag;
+  final String time;
+  ScreenArguments(this.location, this.flag, this.time);
+}
+
 class _LoadingState extends State<Loading> {
   void setUpWorldTime() async {
-    WorldTime instance = WorldTime(location: "Delhi", flag: "Delhi.png");
+    WorldTime instance =
+        WorldTime(location: "Delhi", flag: "Delhi.png", url: "Asia/Kolkata");
 //we set a Future place holder and now we can use await here
     await instance.getTime();
     print(instance.time);
+    //pushreplacement push and remove previous route
+    Navigator.pushReplacementNamed(
+      context,
+      "/home",
+      arguments:
+          ScreenArguments(instance.location, instance.flag, instance.time),
+    );
   }
 
   @override
@@ -24,38 +41,11 @@ class _LoadingState extends State<Loading> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Laoding",
-          style: TextStyle(color: Colors.white),
-        ),
-        centerTitle: true,
-        backgroundColor: Colors.blue[600],
-      ),
-      body: Container(
-        child: Column(
-          children: [
-            Row(
-              children: [
-                ElevatedButton.icon(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/location');
-                  },
-                  icon: Icon(Icons.edit_location),
-                  label: Text(""),
-                ),
-                ElevatedButton.icon(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/home');
-                  },
-                  icon: Icon(Icons.home),
-                  label: Text(""),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
+      body: Center(
+          child: SpinKitCubeGrid(
+        color: Colors.blueGrey,
+        size: 80,
+      )),
     );
   }
 }

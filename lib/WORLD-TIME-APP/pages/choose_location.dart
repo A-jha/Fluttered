@@ -1,3 +1,4 @@
+import 'package:flut_1/WORLD-TIME-APP/services/world_time.dart';
 import 'package:flutter/material.dart';
 
 class ChooseLocation extends StatefulWidget {
@@ -8,43 +9,66 @@ class ChooseLocation extends StatefulWidget {
 }
 
 class _ChooseLocationState extends State<ChooseLocation> {
-  void getDataSync() {
-    //simulate network request for a user name
-    Future.delayed(Duration(seconds: 3), () {
-      print("I appeared after 3 sec");
-    });
-    print("i am in a synchronious code");
-  }
+  //data
+  List<WorldTime> location = [
+    WorldTime(
+        url: "Europe/London",
+        location: "London",
+        flag: "https://source.unsplash.com/collection/190727/1200x400"),
+    WorldTime(
+        url: "Asia/Tokio",
+        location: "Tokio",
+        flag: "https://source.unsplash.com/collection/190727/1200x400"),
+    WorldTime(
+        url: "America/New_York",
+        location: "NewYork",
+        flag: "https://source.unsplash.com/collection/190727/1200x400"),
+    WorldTime(
+        url: "America/Chicago",
+        location: "Chicago",
+        flag: "https://source.unsplash.com/collection/190727/1200x400"),
+    WorldTime(
+        url: "Asia/Kolkata",
+        location: "Kolkata",
+        flag: "https://source.unsplash.com/collection/190727/1200x400"),
+    WorldTime(
+        url: "Europe/Paris",
+        location: "Paris",
+        flag: "https://source.unsplash.com/collection/190727/1200x400"),
+    WorldTime(
+        url: "Australia/Melbourne",
+        location: "Melbourne",
+        flag: "https://source.unsplash.com/collection/190727/1200x400"),
+    WorldTime(
+        url: "Asia/Dubai",
+        location: "Dubai",
+        flag: "https://source.unsplash.com/collection/190727/1200x400"),
+    WorldTime(
+        url: "Asia/Colombo",
+        location: "Colombo",
+        flag: "https://source.unsplash.com/collection/190727/1200x400"),
+    WorldTime(
+        url: "Asia/Bangkok",
+        location: "Bangkok",
+        flag: "https://source.unsplash.com/collection/190727/1200x400"),
+    WorldTime(
+        url: "Europe/Moscow",
+        location: "Moscow",
+        flag: "https://source.unsplash.com/collection/190727/1200x400"),
+  ];
 
-  void getDataAsync() async {
-    await Future.delayed(Duration(seconds: 2), () {
-      print("i am asynchrounious from now every thing after me");
-    });
+  void updateTime(index) async {
+    WorldTime instance = location[index];
+    await instance.getTime();
 
-    print("i will be printed after wait of 2 second");
-  }
-
-  void getData() async {
-    int id = await Future.delayed(Duration(seconds: 2), () {
-      return 1;
-    });
-    print(id);
-    String username = await Future.delayed(Duration(seconds: 3), () {
-      String newUser = "Avinash";
-      return newUser;
-    });
-    print(username);
-    String about = await Future.delayed(Duration(seconds: 2), () {
-      return "Tera baap aaya";
-    });
-    print(about);
+    Navigator.pop(context, {instance.location, instance.flag, instance.time});
   }
 
   @override
   void initState() {
     super.initState();
     print("state initiated");
-    getData();
+    //getData();
   }
 
   Widget build(BuildContext context) {
@@ -57,11 +81,19 @@ class _ChooseLocationState extends State<ChooseLocation> {
         centerTitle: true,
         backgroundColor: Colors.blue[600],
       ),
-      body: Container(
-        child: Column(
-          children: [],
-        ),
-      ),
+      body: ListView.builder(
+          itemCount: location.length,
+          itemBuilder: (context, index) {
+            return Card(
+              child: ListTile(
+                onTap: () {
+                  updateTime(index);
+                },
+                leading: Icon(Icons.location_city),
+                title: Text(location[index].location),
+              ),
+            );
+          }),
     );
   }
 }
