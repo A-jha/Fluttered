@@ -52,6 +52,13 @@ class _HomeState extends State<Home> {
               },
               child: Text("LogIn"),
             ),
+            ElevatedButton(
+              onPressed: () {
+                print("button pressed");
+                Navigator.pushNamed(context, "/calculator");
+              },
+              child: Text("Calculator"),
+            ),
           ],
         ),
       ),
