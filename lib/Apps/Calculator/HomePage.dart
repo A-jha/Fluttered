@@ -12,13 +12,15 @@ class Calculator extends StatefulWidget {
 }
 
 class _CalculatorState extends State<Calculator> {
+  String input = "";
+  double result = 0;
+  int flag = 0;
+  List<String> stack = [];
   InputNumbers nums = InputNumbers();
-  //InputTemp temp = InputTemp();
-  String string = "0";
-  int result = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: Colors.pink,
         appBar: AppBar(
           title: Text("</ Calculator />"),
           centerTitle: true,
@@ -32,7 +34,7 @@ class _CalculatorState extends State<Calculator> {
                 width: 600,
                 color: Colors.black,
                 child: Text(
-                  "$string",
+                  "$input",
                   textAlign: TextAlign.right,
                   style: TextStyle(
                     fontSize: 40,
@@ -62,64 +64,320 @@ class _CalculatorState extends State<Calculator> {
               // ),
               Row(
                 children: [
-                  CustomBox(
-                      a: nums.a.toString(),
-                      temp: string,
-                      color: Colors.blueGrey),
-                  CustomBox(
-                      a: nums.b.toString(),
-                      temp: string,
-                      color: Colors.blueGrey),
-                  CustomBox(
-                      a: nums.c.toString(),
-                      temp: string,
-                      color: Colors.blueGrey),
-                  CustomBox(
-                      a: nums.j.toString(),
-                      temp: string,
-                      color: Colors.blueGrey),
+                  Expanded(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          elevation: 0,
+                          padding: EdgeInsets.fromLTRB(0, 40, 0, 40)),
+                      onPressed: () {
+                        setState(() {
+                          input += nums.a.toString();
+                        });
+
+                        print(input);
+                      },
+                      child: Text("1"),
+                    ),
+                  ),
+                  Expanded(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          elevation: 0,
+                          padding: EdgeInsets.fromLTRB(0, 40, 0, 40)),
+                      onPressed: () {
+                        setState(() {
+                          input += nums.b.toString();
+                        });
+
+                        print(input);
+                      },
+                      child: Text("2"),
+                    ),
+                  ),
+                  Expanded(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          elevation: 0,
+                          padding: EdgeInsets.fromLTRB(0, 40, 0, 40)),
+                      onPressed: () {
+                        setState(() {
+                          input += nums.c.toString();
+                        });
+
+                        print(input);
+                      },
+                      child: Text("3"),
+                    ),
+                  ),
+                  Expanded(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          elevation: 0,
+                          padding: EdgeInsets.fromLTRB(0, 40, 0, 40)),
+                      onPressed: () {
+                        setState(() {
+                          input += nums.d.toString();
+                        });
+
+                        print(input);
+                      },
+                      child: Text("4"),
+                    ),
+                  ),
                 ],
               ),
               Row(
                 children: [
-                  CustomBox(
-                      a: nums.d.toString(),
-                      temp: string,
-                      color: Colors.blueGrey),
-                  CustomBox(
-                      a: nums.e.toString(),
-                      temp: string,
-                      color: Colors.blueGrey),
-                  CustomBox(
-                      a: nums.f.toString(),
-                      temp: string,
-                      color: Colors.blueGrey),
-                  CustomBox(a: "+", color: Colors.blueGrey),
+                  Expanded(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          elevation: 0,
+                          padding: EdgeInsets.fromLTRB(0, 40, 0, 40)),
+                      onPressed: () {
+                        setState(() {
+                          input += nums.e.toString();
+                        });
+
+                        print(input);
+                      },
+                      child: Text("5"),
+                    ),
+                  ),
+                  Expanded(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          elevation: 0,
+                          padding: EdgeInsets.fromLTRB(0, 40, 0, 40)),
+                      onPressed: () {
+                        setState(() {
+                          input += nums.f.toString();
+                        });
+
+                        print(input);
+                      },
+                      child: Text("6"),
+                    ),
+                  ),
+                  Expanded(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          elevation: 0,
+                          padding: EdgeInsets.fromLTRB(0, 40, 0, 40)),
+                      onPressed: () {
+                        setState(() {
+                          input += nums.g.toString();
+                        });
+
+                        print(input);
+                      },
+                      child: Text("7"),
+                    ),
+                  ),
+                  Expanded(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          elevation: 0,
+                          padding: EdgeInsets.fromLTRB(0, 40, 0, 40)),
+                      onPressed: () {
+                        setState(() {
+                          input += nums.h.toString();
+                        });
+
+                        print(input);
+                      },
+                      child: Text("8"),
+                    ),
+                  ),
                 ],
               ),
               Row(
                 children: [
-                  CustomBox(
-                      a: nums.g.toString(),
-                      temp: string,
-                      color: Colors.blueGrey),
-                  CustomBox(
-                      a: nums.h.toString(),
-                      temp: string,
-                      color: Colors.blueGrey),
-                  CustomBox(
-                      a: nums.i.toString(),
-                      temp: string,
-                      color: Colors.blueGrey),
-                  CustomBox(a: "^", color: Colors.blueGrey),
+                  Expanded(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          elevation: 0,
+                          padding: EdgeInsets.fromLTRB(0, 40, 0, 40)),
+                      onPressed: () {
+                        setState(() {
+                          input += nums.i.toString();
+                        });
+
+                        print(input);
+                      },
+                      child: Text("9"),
+                    ),
+                  ),
+                  Expanded(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          elevation: 0,
+                          padding: EdgeInsets.fromLTRB(0, 40, 0, 40)),
+                      onPressed: () {
+                        if (input != "")
+                          setState(() {
+                            input += nums.j.toString();
+                          });
+                        print(input);
+                      },
+                      child: Text("0"),
+                    ),
+                  ),
+                  Expanded(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          elevation: 0,
+                          padding: EdgeInsets.fromLTRB(0, 40, 0, 40)),
+                      onPressed: () {
+                        if(input!="" && input !="+"){
+                          push(stack, input);
+
+                        }
+                        input ="";
+                        input+= "+";
+                        if(isValid(stack)) {
+                          push(stack, input);
+                        }else{
+                          pop(stack);
+                          push(stack, input);
+                        }
+                        input="";
+                        print(stack);
+                      },
+                      child: Text("+"),
+                    ),
+                  ),
+                  Expanded(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          elevation: 0,
+                          padding: EdgeInsets.fromLTRB(0, 40, 0, 40)),
+                      onPressed: () {
+                        if(input!="" && input !="-"){
+                          push(stack, input);
+
+                        }
+                        input ="";
+                        input+= "-";
+                        if(isValid(stack)) {
+                          push(stack, input);
+                        }else{
+                          pop(stack);
+                          push(stack, input);
+                        }
+                        input="";
+                        print(stack);
+                      },
+                      child: Text("-"),
+                    ),
+                  ),
                 ],
               ),
               Row(
                 children: [
-                  CustomBox(a: "x", temp: string, color: Colors.blueGrey),
-                  CustomBox(a: "÷", temp: string, color: Colors.blueGrey),
-                  CustomBox(a: "%", temp: string, color: Colors.blueGrey),
-                  CustomBox(a: "=", temp: string, color: Colors.blueGrey),
+                  Expanded(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          elevation: 0,
+                          padding: EdgeInsets.fromLTRB(0, 40, 0, 40)),
+                      onPressed: () {
+                        if(input!="" && input !="÷"){
+                          push(stack, input);
+                        }
+                        input ="";
+                        input+= "÷";
+                        if(isValid(stack)) {
+                          push(stack, input);
+                        }else{
+                          pop(stack);
+                          push(stack, input);
+                        }
+                        input = "";
+                        print(stack);
+                      },
+                      child: Text("÷"),
+                    ),
+                  ),
+                  Expanded(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          elevation: 0,
+                          padding: EdgeInsets.fromLTRB(0, 40, 0, 40)),
+                      onPressed: () {
+                        if(input!="" && input !="*"){
+                          push(stack, input);
+                        }
+                        input ="";
+                        input+= "*";
+                        if(isValid(stack)) {
+                          push(stack, input);
+                        }else{
+                          pop(stack);
+                          push(stack, input);
+                        }
+                        input="";
+                        print(stack);
+                      },
+                      child: Text("*"),
+                    ),
+                  ),
+                  Expanded(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          elevation: 0,
+                          padding: EdgeInsets.fromLTRB(0, 40, 0, 40)),
+                      onPressed: () {
+                        if(input!="" && input !="%"){
+                          push(stack, input);
+                        }
+                        input ="";
+                        input+= "%";
+                        if(isValid(stack)) {
+                          push(stack, input);
+                        }else{
+                          pop(stack);
+                          push(stack, input);
+                        }
+                        input="";
+                        print(stack);
+                      },
+                      child: Text("%"),
+                    ),
+                  ),
+                  Expanded(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+
+                          padding: EdgeInsets.fromLTRB(0, 40, 0, 40)),
+                      onPressed: () {
+                        if(input!="" && input !="="){
+                          push(stack, input);
+                        }
+                        print(stack);
+                        input="";
+                       setState(() {
+                         result = calculate(stack);
+                       });
+                       print(result);
+                      },
+                      child: Text("="),
+                    ),
+                  ),
+                  Expanded(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          elevation: 1,
+                          padding: EdgeInsets.fromLTRB(0, 40, 0, 40)),
+                      onPressed: () {
+                        stack = [];
+                        flag = 0;
+                        setState(() {
+                          input="";
+                        });
+                        result = 0;
+                      },
+                      child: Text("C"),
+                    ),
+                  ),
                 ],
               )
             ],
@@ -154,32 +412,23 @@ class InputNumbers {
 }
 
 // ignore: non_constant_identifier_names
-Widget CustomBox({String a = "1", color = Colors.amber, String temp = ""}) {
-  return Expanded(
-    child: Container(
-      margin: EdgeInsets.all(1),
-      child: ElevatedButton(
-        onPressed: () {
-          temp = temp + a;
-          print(temp);
-        },
-        style: ElevatedButton.styleFrom(
-            primary: color, alignment: Alignment.centerLeft),
-        child: Container(
-          padding: EdgeInsets.all(30),
-          margin: EdgeInsets.all(10),
-          child: Text(
-            "$a",
-            style: TextStyle(
-              fontSize: 30,
-            ),
-            textAlign: TextAlign.end,
-          ),
-        ),
-      ),
-    ),
-  );
-}
+// Widget CustomBox({String a = "1", color = Colors.amber}) {
+//   return Expanded(
+//     child: Container(
+//       color: color,
+//       margin: EdgeInsets.all(1),
+//       padding: EdgeInsets.all(30),
+//       child: Text(
+//         "$a",
+//         style: TextStyle(
+//           fontSize: 30,
+//         ),
+//         textAlign: TextAlign.end,
+//       ),
+//     ),
+//     flex: 1,
+//   );
+// }
 
 // class InputTemp {
 //   String a;
@@ -205,3 +454,69 @@ Widget CustomBox({String a = "1", color = Colors.amber, String temp = ""}) {
 //       this.i = "",
 //       this.j = ""});
 // }
+
+void push(List<String> l, String item) {
+  l.add(item);
+}
+
+String pop(List<String> l) {
+  String temp = l.last;
+  l.removeLast();
+  return temp;
+}
+
+bool isValid( List<String> l){
+  String item = l.last;
+  if(item == "+" || item == "-" || item == "*" || item == "÷" || item== "%" || item == "="){
+    return false;
+  }else{
+    return true;
+  }
+}
+int length (List<String>l){
+  int i=0;
+  String temp = l.last;
+  while(l[i]== temp){
+    i++;
+  }
+  return i;
+}
+double calculate(List<String>l) {
+  double b = 0;
+  int x= length(l);
+  while(x>1){
+    x--;
+  double temp2 = double.parse(l[0]) ;
+  String ch = l[1];
+
+  double temp1 = double.parse(l[2]);
+  b = temp2;
+  l.removeAt(0);
+  l.removeAt(1);
+  switch (ch) {
+    case "+":
+
+      l.first =  (temp2 + temp1).toString();
+      break;
+    case "-":
+      b = temp2 - temp1;
+      l.first =  (temp2 - temp1).toString();
+      break;
+    case "*":
+        b = temp2 * temp1;
+      l.first =  (temp2 * temp1).toString();
+      break;
+    case "÷":
+      b = temp2 / temp1;
+      l.first =  (temp2 / temp1).toString();
+      break;
+    case "%":
+      b = temp2 % temp1;
+      l.first =  (temp2 % temp1).toString();
+      break;
+    default :
+      print("happy happy");
+      break;
+  }}
+  return b;
+}
