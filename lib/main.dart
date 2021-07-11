@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:test1/Apps/Calculator/HomePage.dart';
+import 'package:test1/Apps/FetchApi/Fetch.dart';
 import 'package:test1/Forms/Login.dart';
 import "package:test1/Loading.dart";
 import "package:test1/Home.dart";
@@ -16,6 +17,7 @@ void main() {
         "/signup": (context) => SignUp(),
         "/login": (context) => LogIn(),
         "/calculator": (context) => Calculator(),
+        "/fetch":(context)=>FetchData(),
       },
     ),
   );
