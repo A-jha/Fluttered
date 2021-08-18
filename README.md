@@ -95,7 +95,7 @@ class _ChooseLocationState extends State<ChooseLocation> {
   }
 ```
 
-- Output
+Output
 
 ```
 state initiated
@@ -133,4 +133,36 @@ Output:
 state initiated
 getData after 8 second
 I am getBio function after 5 sec
+```
+
+## Flutter Packages
+
+1. http Package : This package contains a set of high-level functions and classes that make it easy to consume HTTP resources. It's multi-platform, and supports mobile, desktop, and the browser.
+
+```dart
+import 'package:http/http.dart' as http;
+```
+
+Using http package it is very easy to fetch data from APIs
+
+Example of getting data from API
+
+```dart
+var url = Uri.parse("https://jsonplaceholder.typicode.com/todos/");
+
+  //init client
+  var client = http.Client();
+
+  void getData(Uri url) async {
+    try {
+      http.Response response = await client.get(url);
+      //print(response.body);
+      List data = jsonDecode(response.body);
+      print(data[1]['title']);
+    } catch (e) {
+      print("some error $e");
+    } finally {
+      client.close();
+    }
+  }
 ```

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 class ChooseLocation extends StatefulWidget {
   const ChooseLocation({Key? key}) : super(key: key);
@@ -8,49 +9,47 @@ class ChooseLocation extends StatefulWidget {
 }
 
 class _ChooseLocationState extends State<ChooseLocation> {
-  int a = 1;
-
-  //implementing async await future
-  void getData() async {
-    //simulate a networj request
-    await Future.delayed(Duration(seconds: 8), () {
-      print("getData after 8 second");
-    });
-    //simulate another network request
-    Future.delayed(Duration(seconds: 5), () {
-      print("I am getBio function after 5 sec");
-    });
-  }
-
   @override
-  void initState() {
-    super.initState();
-    getData();
-    print("state initiated");
-  }
-
   Widget build(BuildContext context) {
-    print("buiding called");
+    // dynamic data =
+    //     ModalRoute.of(context)!.settings.arguments as ScreenArguments;
     return Scaffold(
         appBar: AppBar(
-          title: Text("Choose Location"),
+          title: Text("WorldTime"),
           centerTitle: true,
           elevation: 0,
         ),
-        body: Container(
-          alignment: Alignment.center,
-          child: Text("$a"),
-        ),
-        floatingActionButton: FloatingActionButton(
-          mini: true,
-          onPressed: () => {
-            setState(() {
-              a++;
-            })
+        body: ListView.builder(
+          itemCount: continentEndPoints.length,
+          itemBuilder: (context, index) {
+            return Container(
+              alignment: Alignment.center,
+              child: Card(
+                margin: EdgeInsets.all(20),
+                child: ListTile(
+                  selectedTileColor: Colors.amber,
+                  onTap: () {
+                    print(continentEndPoints[index]);
+                    Navigator.pushNamed(context, "/dataloading",
+                        arguments: continentEndPoints[index]);
+                  },
+                  title: Padding(
+                      padding: const EdgeInsets.all(20.0),
+                      child: Text(continentEndPoints[index])),
+                ),
+              ),
+            );
           },
-          child: Icon(
-            Icons.add,
-          ),
         ));
   }
 }
+
+List<String> continentEndPoints = [
+  "Africa",
+  "America",
+  "Antarctica",
+  "Asia",
+  "Australia",
+  "Europe",
+  "Pacific",
+];

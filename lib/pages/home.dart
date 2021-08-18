@@ -1,4 +1,7 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -11,30 +14,19 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("WorldTime"),
-          centerTitle: true,
-          elevation: 0,
-        ),
-        body: Column(
+      appBar: AppBar(
+        title: Text("Home"),
+        centerTitle: true,
+      ),
+      body: Container(
+        child: Column(
           children: [
-            Center(
-              child: TextButton(
-                  onPressed: () =>
-                      {Navigator.pushReplacementNamed(context, "/choose")},
-                  child: Container(
-                    color: Colors.amber,
-                    padding: const EdgeInsets.all(8.0),
-                    margin: const EdgeInsets.all(8.0),
-                    child: Text(
-                      "Choose A Location",
-                      style: TextStyle(
-                        backgroundColor: Colors.amber,
-                      ),
-                    ),
-                  )),
-            ),
+            Row(
+              children: [Expanded(child: Card(child: Text("Full time")))],
+            )
           ],
-        ));
+        ),
+      ),
+    );
   }
 }
