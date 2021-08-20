@@ -29,6 +29,8 @@ class _EuropeState extends State<Europe> {
               return ListTile(
                 onTap: () {
                   print("${args.allRegion[index]}");
+                  Navigator.pushNamed(context, "/loadtohome",
+                      arguments: args.allRegion[index]);
                 },
                 title: Text("${args.allRegion[index]}"),
               );

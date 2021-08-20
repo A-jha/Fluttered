@@ -29,6 +29,9 @@ class _AfricaState extends State<Africa> {
               return ListTile(
                 onTap: () {
                   print("${args.allRegion[index]}");
+
+                  Navigator.restorablePushNamed(context, "/loadtohome",
+                      arguments: args.allRegion[index]);
                 },
                 title: Text("${args.allRegion[index]}"),
               );

@@ -1,5 +1,3 @@
-import 'dart:js';
-
 import 'package:flutter/material.dart';
 import 'package:worldtime/locations/Antarctica.dart';
 import 'package:worldtime/locations/Asia.dart';
@@ -10,16 +8,15 @@ import 'package:worldtime/locations/africa.dart';
 import 'package:worldtime/locations/america.dart';
 import 'package:worldtime/pages/home.dart';
 import "package:worldtime/pages/choose_location.dart";
-import 'package:worldtime/pages/loading.dart';
 import 'package:worldtime/utils/fetchDataLoading.dart';
+import 'package:worldtime/utils/fetchDataLoadingOnHomeScreen.dart';
 
 void main() => runApp(MaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: "/",
+        initialRoute: "/loadtohome",
         routes: {
           "/": (context) => Home(),
           "/choose": (context) => ChooseLocation(),
-          "/loading": (context) => Loading(),
           "/africa": (context) => Africa(),
           "/america": (context) => America(),
           "/antarctica": (context) => Antarctica(),
@@ -28,4 +25,5 @@ void main() => runApp(MaterialApp(
           "/europe": (context) => Europe(),
           "/pacific": (context) => Pacific(),
           "/dataloading": (context) => FetchLoading(),
+          "/loadtohome": (context) => FetchLoadingHome(),
         }));

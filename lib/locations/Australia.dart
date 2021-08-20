@@ -29,6 +29,8 @@ class _AustraliaState extends State<Australia> {
               return ListTile(
                 onTap: () {
                   print("${args.allRegion[index]}");
+                  Navigator.pushReplacementNamed(context, "/loadtohome",
+                      arguments: args.allRegion[index]);
                 },
                 title: Text("${args.allRegion[index]}"),
               );

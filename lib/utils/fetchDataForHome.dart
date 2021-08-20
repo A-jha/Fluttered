@@ -1,17 +1,19 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-Future<List<dynamic>> fetchData(String url) async {
+Future<Map> fetchDataForHome(String url) async {
   var _url = Uri.parse(url);
   //setup hhtp instance
   var client = http.Client();
   try {
     http.Response response = await client.get(_url);
-    List<dynamic> data = jsonDecode(response.body);
+    Map data = jsonDecode(response.body);
+    print(data);
     client.close();
     return data;
+    //return data;
   } catch (e) {
     print(e);
-    return ["Sorry", "No Data Found"];
+    return {"Sorry": "No Data Found"};
   }
 }
