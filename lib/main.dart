@@ -15,6 +15,7 @@ void main() => runApp(MaterialApp(
         debugShowCheckedModeBanner: false,
         initialRoute: "/loadtohome",
         routes: {
+          "/loadtohome": (context) => FetchLoadingHome(),
           "/": (context) => Home(),
           "/choose": (context) => ChooseLocation(),
           "/africa": (context) => Africa(),
@@ -25,5 +26,4 @@ void main() => runApp(MaterialApp(
           "/europe": (context) => Europe(),
           "/pacific": (context) => Pacific(),
           "/dataloading": (context) => FetchLoading(),
-          "/loadtohome": (context) => FetchLoadingHome(),
         }));

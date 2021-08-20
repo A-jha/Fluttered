@@ -20,9 +20,9 @@ class _FetchLoadingState extends State<FetchLoading> {
   void _fetcData(String endpoint) async {
     allRegion =
         await fetchData("https://worldtimeapi.org/api/timezone/$endpoint");
-    print(allRegion);
-    print("data fetched");
-    print(allRegion.length);
+    //print(allRegion);
+    //print("data fetched");
+    //print(allRegion.length);
     Navigator.pushReplacementNamed(context, "/${endpoint.toLowerCase()}",
         arguments: ScreenArguments(allRegion));
   }

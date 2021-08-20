@@ -25,9 +25,9 @@ class _FetchLoadingHomeState extends State<FetchLoadingHome> {
   void _fetchDataForHome(String endpoint) async {
     WorldTime instance = WorldTime(endpoint: endpoint);
     await instance.getData();
-     Navigator.pushReplacementNamed(
+     Navigator.pushNamedAndRemoveUntil(
       context,
-      "/",
+      "/", (_) => false,
       arguments: ScreenArguments(instance.location, instance.time, instance.dayOfYear, instance.dayOfWeek,instance.weekNumber,instance.date, instance.day),
     );
   }

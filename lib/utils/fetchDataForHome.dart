@@ -8,7 +8,7 @@ Future<Map> fetchDataForHome(String url) async {
   try {
     http.Response response = await client.get(_url);
     Map data = jsonDecode(response.body);
-    print(data);
+    //print(data);
     client.close();
     return data;
     //return data;
